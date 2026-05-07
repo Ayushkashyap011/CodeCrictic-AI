@@ -320,12 +320,25 @@ CodeCritic-AI/
 
 ---
 
-## License
+## 🔒 Security
 
-MIT
+**IMPORTANT**: A MongoDB credential leak was detected and removed from Git history. If you had this repository cloned before May 7, 2026:
+
+### Immediate Actions Required:
+1. **Rotate MongoDB credentials** in MongoDB Atlas console
+2. **Reset Groq API key** if exposed
+3. Pull the latest changes: `git pull --force`
+
+### Protecting Your Credentials:
+✅ **Never commit sensitive data** to Git
+- `.env` files are listed in `.gitignore` (ignored automatically)
+- Use environment variables instead
+- Use `.env.example` as a template for other developers
+
+### Best Practices:
+- Keep `.env` in `.gitignore` ✓ (already configured)
+- Use `config.py` with empty defaults and load from `.env` ✓ (already fixed)
+- Rotate credentials regularly if exposed
+- Use GitHub secret scanning alerts to catch issues early
 
 ---
-
-## Support
-
-For issues or questions, please refer to [CHANGES_SUMMARY.md](CHANGES_SUMMARY.md) for detailed technical documentation.
