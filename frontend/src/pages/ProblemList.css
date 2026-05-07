@@ -1,0 +1,135 @@
+.problem-list-container {
+  flex: 1;
+  overflow-y: auto;
+  background-color: var(--bg-primary);
+  padding: 40px 20px;
+}
+
+.problem-list-header {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+}
+
+.problem-list-header h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.problem-count {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.error-message {
+  max-width: 1400px;
+  margin: 0 auto 30px;
+  background-color: rgba(225, 112, 85, 0.1);
+  border: 1px solid rgba(225, 112, 85, 0.3);
+  border-radius: 8px;
+  padding: 15px 20px;
+  color: #e17055;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.filter-section {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.filter-select,
+.search-input {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.filter-select:hover,
+.search-input:hover {
+  border-color: var(--color-primary);
+}
+
+.filter-select:focus,
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.2);
+}
+
+.search-group {
+  grid-column: 1 / -1;
+}
+
+.search-input {
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.problems-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.no-problems {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.no-problems p {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .problem-list-header h1 {
+    font-size: 32px;
+  }
+
+  .filter-section {
+    grid-template-columns: 1fr;
+  }
+
+  .search-group {
+    grid-column: 1;
+  }
+
+  .problems-grid {
+    grid-template-columns: 1fr;
+  }
+}
