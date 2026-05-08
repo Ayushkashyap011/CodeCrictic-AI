@@ -5,6 +5,7 @@ Run: python run.py
 """
 import sys
 import asyncio
+import os
 
 # Set policy BEFORE Uvicorn creates the event loop
 if sys.platform.startswith("win"):
@@ -13,10 +14,11 @@ if sys.platform.startswith("win"):
 import uvicorn
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
     config = uvicorn.Config(
         "app.main:app",
-        host="127.0.0.1",
-        port=8000,
+        host="0.0.0.0",
+        port=port,
         reload=False,
         log_level="info"
     )
