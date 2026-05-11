@@ -6,9 +6,17 @@ Supports all 12 problems in all 4 languages. Users only submit the Solution clas
 import re
 
 
+def _prepare_code_for_language(code: str, language: str) -> str:
+    """Prepare code for the given language (e.g., remove public modifier from Java classes)."""
+    if language == "java":
+        # Remove 'public' modifier from Solution class since both Solution and Main will be in same file
+        code = re.sub(r'public\s+class\s+Solution', 'class Solution', code)
+    return code
+
+
 def _ensure_cpp_includes(code: str) -> str:
     """Add necessary C++ includes at the beginning if not already present."""
-    required_headers = ['vector', 'unordered_map', 'string', 'algorithm', 'iostream', 'stack', 'queue']
+    required_headers = ['vector', 'unordered_map', 'string', 'algorithm', 'iostream', 'stack', 'queue', 'climits']
     
     headers_to_add = []
     for header in required_headers:
@@ -35,6 +43,9 @@ def wrap_solution(code: str, problem_title: str, input_data: str, language: str)
     Main entry point. Detects problem type from title and wraps accordingly.
     Returns complete executable code for the given language.
     """
+    # Prepare code for language-specific requirements
+    code = _prepare_code_for_language(code, language)
+    
     title_lower = problem_title.lower()
 
     wrapped = code  # fallback
