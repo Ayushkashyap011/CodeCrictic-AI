@@ -206,7 +206,15 @@ def _spec_for(language: Language) -> RuntimeSpec:
 
 
 def _normalize_output(text: str) -> str:
-    return text.strip()
+    """Normalize output by stripping whitespace and removing spaces in arrays."""
+    text = text.strip()
+    # Remove spaces after commas and around brackets for consistent array formatting
+    # E.g., "[0, 1]" becomes "[0,1]"
+    import re
+    text = re.sub(r',\s+', ',', text)  # Remove spaces after commas
+    text = re.sub(r'\[\s+', '[', text)  # Remove spaces after opening bracket
+    text = re.sub(r'\s+\]', ']', text)  # Remove spaces before closing bracket
+    return text
 
 
 class PistonService:

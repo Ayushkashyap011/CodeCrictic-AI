@@ -7,9 +7,26 @@ import re
 
 
 def _ensure_cpp_includes(code: str) -> str:
-    """Add necessary C++ includes if not already present."""
-    if "#include" not in code:
-        return "#include <vector>\n#include <unordered_map>\n#include <string>\n#include <algorithm>\n#include <iostream>\n#include <stack>\n#include <queue>\nusing namespace std;\n\n" + code
+    """Add necessary C++ includes at the beginning if not already present."""
+    required_headers = ['vector', 'unordered_map', 'string', 'algorithm', 'iostream', 'stack', 'queue']
+    
+    headers_to_add = []
+    for header in required_headers:
+        if f"#include <{header}>" not in code:
+            headers_to_add.append(f"#include <{header}>")
+    
+    # If any headers need to be added, prepend them
+    if headers_to_add:
+        code = "\n".join(headers_to_add) + "\n" + code
+    
+    # Ensure "using namespace std;" is present (add before first class/function definition if not present)
+    if "using namespace std;" not in code:
+        # Insert before the class definition
+        if "class Solution" in code:
+            code = code.replace("class Solution", "using namespace std;\n\nclass Solution", 1)
+        else:
+            code = "using namespace std;\n\n" + code
+    
     return code
 
 
@@ -94,7 +111,8 @@ def _wrap_two_sum(code: str, input_data: str, language: str) -> str:
 import json as _json
 _nums = _json.loads("""{nums_json}""")
 _target = {target}
-print(Solution().twoSum(_nums, _target))
+_result = Solution().twoSum(_nums, _target)
+print(_json.dumps(_result))
 '''
     elif language == "java":
         return code + f'''
@@ -158,7 +176,7 @@ print(Solution().isValid(_s))
 public class Main {{
     public static void main(String[] args) {{
         String s = "{s}";
-        System.out.println(new Solution().isValid(s));
+        System.out.println(new Solution().isValid(s) ? "True" : "False");
     }}
 }}
 '''
@@ -166,14 +184,15 @@ public class Main {{
         return code + f'''
 
 const s = "{s}";
-console.log(new Solution().isValid(s));
+const result = new Solution().isValid(s);
+console.log(result ? "True" : "False");
 '''
     elif language == "cpp":
         return code + f'''
 
 int main() {{
     string s = "{s}";
-    cout << (new Solution()->isValid(s) ? "true" : "false") << endl;
+    cout << (new Solution()->isValid(s) ? "True" : "False") << endl;
     delete new Solution();
     return 0;
 }}
