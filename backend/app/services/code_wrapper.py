@@ -6,6 +6,13 @@ Supports all 12 problems in all 4 languages. Users only submit the Solution clas
 import re
 
 
+def _ensure_cpp_includes(code: str) -> str:
+    """Add necessary C++ includes if not already present."""
+    if "#include" not in code:
+        return "#include <vector>\n#include <unordered_map>\n#include <string>\n#include <algorithm>\n#include <iostream>\n#include <stack>\n#include <queue>\nusing namespace std;\n\n" + code
+    return code
+
+
 def wrap_solution(code: str, problem_title: str, input_data: str, language: str) -> str:
     """
     Main entry point. Detects problem type from title and wraps accordingly.
@@ -13,32 +20,37 @@ def wrap_solution(code: str, problem_title: str, input_data: str, language: str)
     """
     title_lower = problem_title.lower()
 
+    wrapped = code  # fallback
     if "two sum" in title_lower:
-        return _wrap_two_sum(code, input_data, language)
+        wrapped = _wrap_two_sum(code, input_data, language)
     elif "valid parentheses" in title_lower:
-        return _wrap_valid_parentheses(code, input_data, language)
+        wrapped = _wrap_valid_parentheses(code, input_data, language)
     elif "reverse linked list" in title_lower:
-        return _wrap_reverse_linked_list(code, input_data, language)
+        wrapped = _wrap_reverse_linked_list(code, input_data, language)
     elif "maximum subarray" in title_lower:
-        return _wrap_maximum_subarray(code, input_data, language)
+        wrapped = _wrap_maximum_subarray(code, input_data, language)
     elif "best time" in title_lower:
-        return _wrap_best_time(code, input_data, language)
+        wrapped = _wrap_best_time(code, input_data, language)
     elif "climbing stairs" in title_lower:
-        return _wrap_climbing_stairs(code, input_data, language)
+        wrapped = _wrap_climbing_stairs(code, input_data, language)
     elif "binary search" in title_lower:
-        return _wrap_binary_search(code, input_data, language)
+        wrapped = _wrap_binary_search(code, input_data, language)
     elif "longest common prefix" in title_lower:
-        return _wrap_longest_common_prefix(code, input_data, language)
+        wrapped = _wrap_longest_common_prefix(code, input_data, language)
     elif "number of islands" in title_lower:
-        return _wrap_number_of_islands(code, input_data, language)
+        wrapped = _wrap_number_of_islands(code, input_data, language)
     elif "merge intervals" in title_lower:
-        return _wrap_merge_intervals(code, input_data, language)
+        wrapped = _wrap_merge_intervals(code, input_data, language)
     elif "coin change" in title_lower:
-        return _wrap_coin_change(code, input_data, language)
+        wrapped = _wrap_coin_change(code, input_data, language)
     elif "word search" in title_lower:
-        return _wrap_word_search(code, input_data, language)
-    else:
-        return code
+        wrapped = _wrap_word_search(code, input_data, language)
+    
+    # Ensure C++ has necessary includes
+    if language == "cpp":
+        wrapped = _ensure_cpp_includes(wrapped)
+    
+    return wrapped
 
 
 def wrap_python_solution(user_code: str, test_input: str) -> str:
@@ -112,9 +124,6 @@ console.log("[" + result.join(",") + "]");
 '''
     elif language == "cpp":
         nums_list = ", ".join(nums_json.strip("[]").split(","))
-        # Add necessary includes if not already present
-        if "#include" not in code:
-            code = "#include <vector>\n#include <unordered_map>\n#include <iostream>\nusing namespace std;\n\n" + code
         return code + f'''
 
 int main() {{
