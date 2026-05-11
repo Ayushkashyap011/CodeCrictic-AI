@@ -192,8 +192,7 @@ console.log(result ? "True" : "False");
 
 int main() {{
     string s = "{s}";
-    cout << (new Solution()->isValid(s) ? "True" : "False") << endl;
-    delete new Solution();
+    cout << (Solution().isValid(s) ? "True" : "False") << endl;
     return 0;
 }}
 '''
@@ -688,7 +687,7 @@ console.log(new Solution().exist(board, word));
 int main() {{
     vector<vector<char>> board = {{{{{", ".join(["{" + ", ".join(f"'{c}'" for c in row) + "}" for row in board])}}}}};
     string word = "{word}";
-    cout << (Solution().exist(board, word) ? "true" : "false") << endl;
+    cout << (Solution().exist(board, word) ? "True" : "False") << endl;
     return 0;
 }}
 '''
