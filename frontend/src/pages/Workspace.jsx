@@ -9,43 +9,28 @@ import api from '../api/axios';
 import './Workspace.css';
 
 const STARTER_CODE = {
-  python: `# Submit only the Solution class
-# The backend automatically handles input parsing
-
-from typing import List
+  python: `from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        # Write your solution here
         pass
 `,
-  javascript: `// Submit only the Solution class
-// The backend automatically handles input parsing
-
-class Solution {
+  javascript: `class Solution {
     twoSum(nums, target) {
-        // Write your solution here
+        
     }
 }
 `,
-  java: `// Submit only the Solution class
-// The backend automatically handles input parsing
-
-public class Solution {
+  java: `class Solution {
     public int[] twoSum(int[] nums, int target) {
-        // Write your solution here
-        return new int[]{};
+        
     }
 }
 `,
-  cpp: `// Submit only the Solution class
-// The backend automatically handles input parsing
-
-class Solution {
+  cpp: `class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        // Write your solution here
-        return {};
+        
     }
 };
 `,

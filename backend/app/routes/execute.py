@@ -41,7 +41,9 @@ async def run_code(req: RunCodeRequest, db: AsyncIOMotorDatabase = Depends(get_d
         ]
         
         # Run against examples (public test cases)
-        test_results = await execution_service.run_test_cases(req.code, req.language, test_cases)
+        test_results = await execution_service.run_test_cases(
+            req.code, req.language, test_cases, problem.title
+        )
         
         # Calculate status
         passed_count = sum(1 for t in test_results if t.passed)
@@ -80,7 +82,9 @@ async def submit_code(
     problem_difficulty = problem.difficulty.value if problem else "Medium"
 
     # 3. Execute against hidden test cases
-    test_results = await execution_service.run_test_cases(req.code, req.language, test_cases)
+    test_results = await execution_service.run_test_cases(
+        req.code, req.language, test_cases, problem_title
+    )
 
     # 4. Aggregate results
     passed = sum(1 for r in test_results if r.passed)

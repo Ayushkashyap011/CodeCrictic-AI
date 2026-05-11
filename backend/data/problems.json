@@ -24,10 +24,10 @@
       { "input": "[-1,-2,-3,-4,-5]\n-8", "expected_output": "[2, 4]" }
     ],
     "starter_code": {
-      "python": "from typing import List\n\nclass Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        # Write your solution here\n        pass\n",
-      "java": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        // Write your solution here\n        return new int[]{};\n    }\n}\n",
-      "cpp": "#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        // Write your solution here\n        return {};\n    }\n};\n",
-      "javascript": "/**\n * @param {number[]} nums\n * @param {number} target\n * @return {number[]}\n */\nvar twoSum = function(nums, target) {\n    // Write your solution here\n};\n"
+      "python": "from typing import List\n\nclass Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        pass\n",
+      "java": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        return new int[]{};\n    }\n}\n",
+      "cpp": "#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        return {};\n    }\n};\n",
+      "javascript": "class Solution {\n    twoSum(nums, target) {\n        \n    }\n}\n"
     },
     "tags": ["array", "hash table"],
     "acceptance_rate": 49.5
@@ -43,23 +43,22 @@
       "s consists of parentheses only '()[]{}'."
     ],
     "examples": [
-      { "input": "s = \"()\"", "output": "true" },
-      { "input": "s = \"()[]{}\"", "output": "true" },
-      { "input": "s = \"(]\"", "output": "false" }
+      { "input": "()", "output": "True", "explanation": "Valid parentheses." },
+      { "input": "()[]{}", "output": "True", "explanation": "All brackets matched." },
+      { "input": "(]", "output": "False", "explanation": "Mismatched brackets." }
     ],
     "hidden_testcases": [
       { "input": "()", "expected_output": "True" },
       { "input": "()[]{}", "expected_output": "True" },
       { "input": "(]", "expected_output": "False" },
       { "input": "([)]", "expected_output": "False" },
-      { "input": "{[]}", "expected_output": "True" },
-      { "input": "", "expected_output": "True" }
+      { "input": "{[]}", "expected_output": "True" }
     ],
     "starter_code": {
-      "python": "class Solution:\n    def isValid(self, s: str) -> bool:\n        # Write your solution here\n        pass\n",
-      "java": "class Solution {\n    public boolean isValid(String s) {\n        // Write your solution here\n        return false;\n    }\n}\n",
-      "cpp": "#include <string>\nusing namespace std;\n\nclass Solution {\npublic:\n    bool isValid(string s) {\n        // Write your solution here\n        return false;\n    }\n};\n",
-      "javascript": "/**\n * @param {string} s\n * @return {boolean}\n */\nvar isValid = function(s) {\n    // Write your solution here\n};\n"
+      "python": "class Solution:\n    def isValid(self, s: str) -> bool:\n        pass\n",
+      "java": "class Solution {\n    public boolean isValid(String s) {\n        return false;\n    }\n}\n",
+      "cpp": "#include <string>\nusing namespace std;\n\nclass Solution {\npublic:\n    bool isValid(string s) {\n        return false;\n    }\n};\n",
+      "javascript": "class Solution {\n    isValid(s) {\n        \n    }\n}\n"
     },
     "tags": ["string", "stack"],
     "acceptance_rate": 40.2
@@ -75,19 +74,22 @@
       "-5000 <= Node.val <= 5000"
     ],
     "examples": [
-      { "input": "head = [1,2,3,4,5]", "output": "[5,4,3,2,1]" },
-      { "input": "head = [1,2]", "output": "[2,1]" },
-      { "input": "head = []", "output": "[]" }
+      { "input": "1 2 3 4 5", "output": "5 4 3 2 1", "explanation": "Reversed linked list." },
+      { "input": "1 2", "output": "2 1", "explanation": "Two nodes reversed." },
+      { "input": "1", "output": "1", "explanation": "Single node." }
     ],
     "hidden_testcases": [
       { "input": "1 2 3 4 5", "expected_output": "5 4 3 2 1" },
       { "input": "1 2", "expected_output": "2 1" },
       { "input": "1", "expected_output": "1" },
-      { "input": "1 2 3", "expected_output": "3 2 1" }
+      { "input": "1 2 3", "expected_output": "3 2 1" },
+      { "input": "5 4 3 2 1", "expected_output": "1 2 3 4 5" }
     ],
     "starter_code": {
-      "python": "# Input: space-separated integers on one line\n# Output: reversed list as space-separated integers\n\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def reverseList(self, head):\n        # Write your solution here\n        pass\n\n# Driver code\nnums = list(map(int, input().split()))\nhead = None\nfor n in reversed(nums):\n    head = ListNode(n, head)\nresult = Solution().reverseList(head)\nvals = []\nwhile result:\n    vals.append(str(result.val))\n    result = result.next\nprint(' '.join(vals))\n",
-      "javascript": "// Input: space-separated integers\n// Output: reversed list\nconst readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin });\nrl.on('line', line => {\n    const nums = line.trim().split(' ').map(Number);\n    console.log(nums.reverse().join(' '));\n    rl.close();\n});\n"
+      "python": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def reverseList(self, head):\n        pass\n",
+      "java": "class ListNode {\n    int val;\n    ListNode next;\n    ListNode() {}\n    ListNode(int val) { this.val = val; }\n}\n\nclass Solution {\n    public ListNode reverseList(ListNode head) {\n        return null;\n    }\n}\n",
+      "cpp": "struct ListNode {\n    int val;\n    ListNode *next;\n    ListNode(int x) : val(x), next(NULL) {}\n};\n\nclass Solution {\npublic:\n    ListNode* reverseList(ListNode* head) {\n        return NULL;\n    }\n};\n",
+      "javascript": "class ListNode {\n    constructor(val = 0, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nclass Solution {\n    reverseList(head) {\n        \n    }\n}\n"
     },
     "tags": ["linked list", "recursion"],
     "acceptance_rate": 73.1
@@ -103,9 +105,9 @@
       "-10^4 <= nums[i] <= 10^4"
     ],
     "examples": [
-      { "input": "nums = [-2,1,-3,4,-1,2,1,-5,4]", "output": "6", "explanation": "The subarray [4,-1,2,1] has the largest sum 6." },
-      { "input": "nums = [1]", "output": "1" },
-      { "input": "nums = [5,4,-1,7,8]", "output": "23" }
+      { "input": "-2 1 -3 4 -1 2 1 -5 4", "output": "6", "explanation": "The subarray [4,-1,2,1] has the largest sum 6." },
+      { "input": "1", "output": "1", "explanation": "Single element." },
+      { "input": "5 4 -1 7 8", "output": "23", "explanation": "Entire array." }
     ],
     "hidden_testcases": [
       { "input": "-2 1 -3 4 -1 2 1 -5 4", "expected_output": "6" },
@@ -115,8 +117,10 @@
       { "input": "1 2 3 4 5", "expected_output": "15" }
     ],
     "starter_code": {
-      "python": "from typing import List\n\n# Read input as space-separated integers\nnums = list(map(int, input().split()))\n\nclass Solution:\n    def maxSubArray(self, nums: List[int]) -> int:\n        # Write your solution here\n        pass\n\nprint(Solution().maxSubArray(nums))\n",
-      "javascript": "const readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin });\nrl.on('line', line => {\n    const nums = line.trim().split(' ').map(Number);\n    // Write your solution here\n    rl.close();\n});\n"
+      "python": "from typing import List\n\nclass Solution:\n    def maxSubArray(self, nums: List[int]) -> int:\n        pass\n",
+      "java": "class Solution {\n    public int maxSubArray(int[] nums) {\n        return 0;\n    }\n}\n",
+      "cpp": "class Solution {\npublic:\n    int maxSubArray(vector<int>& nums) {\n        return 0;\n    }\n};\n",
+      "javascript": "class Solution {\n    maxSubArray(nums) {\n        \n    }\n}\n"
     },
     "tags": ["array", "divide and conquer", "dynamic programming"],
     "acceptance_rate": 50.1
@@ -132,8 +136,9 @@
       "0 <= prices[i] <= 10^4"
     ],
     "examples": [
-      { "input": "prices = [7,1,5,3,6,4]", "output": "5", "explanation": "Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5." },
-      { "input": "prices = [7,6,4,3,1]", "output": "0", "explanation": "No transactions are done and the max profit = 0." }
+      { "input": "7 1 5 3 6 4", "output": "5", "explanation": "Buy at 1, sell at 6, profit = 5." },
+      { "input": "7 6 4 3 1", "output": "0", "explanation": "No profit possible." },
+      { "input": "2 4 1", "output": "2", "explanation": "Buy at 2, sell at 4." }
     ],
     "hidden_testcases": [
       { "input": "7 1 5 3 6 4", "expected_output": "5" },
@@ -143,8 +148,10 @@
       { "input": "3 3 3 3", "expected_output": "0" }
     ],
     "starter_code": {
-      "python": "from typing import List\n\nprices = list(map(int, input().split()))\n\nclass Solution:\n    def maxProfit(self, prices: List[int]) -> int:\n        # Write your solution here\n        pass\n\nprint(Solution().maxProfit(prices))\n",
-      "javascript": "const readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin });\nrl.on('line', line => {\n    const prices = line.trim().split(' ').map(Number);\n    // Write your solution here\n    rl.close();\n});\n"
+      "python": "from typing import List\n\nclass Solution:\n    def maxProfit(self, prices: List[int]) -> int:\n        pass\n",
+      "java": "class Solution {\n    public int maxProfit(int[] prices) {\n        return 0;\n    }\n}\n",
+      "cpp": "class Solution {\npublic:\n    int maxProfit(vector<int>& prices) {\n        return 0;\n    }\n};\n",
+      "javascript": "class Solution {\n    maxProfit(prices) {\n        \n    }\n}\n"
     },
     "tags": ["array", "dynamic programming"],
     "acceptance_rate": 54.3
@@ -159,8 +166,9 @@
       "1 <= n <= 45"
     ],
     "examples": [
-      { "input": "n = 2", "output": "2", "explanation": "There are two ways to climb to the top: 1 step + 1 step, or 2 steps." },
-      { "input": "n = 3", "output": "3", "explanation": "1+1+1, 1+2, 2+1." }
+      { "input": "2", "output": "2", "explanation": "Two ways: 1+1 or 2." },
+      { "input": "3", "output": "3", "explanation": "Three ways: 1+1+1, 1+2, 2+1." },
+      { "input": "1", "output": "1", "explanation": "One way: 1." }
     ],
     "hidden_testcases": [
       { "input": "2", "expected_output": "2" },
@@ -170,8 +178,10 @@
       { "input": "45", "expected_output": "1836311903" }
     ],
     "starter_code": {
-      "python": "n = int(input())\n\nclass Solution:\n    def climbStairs(self, n: int) -> int:\n        # Write your solution here\n        pass\n\nprint(Solution().climbStairs(n))\n",
-      "javascript": "const readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin });\nrl.on('line', line => {\n    const n = parseInt(line.trim());\n    // Write your solution here\n    rl.close();\n});\n"
+      "python": "class Solution:\n    def climbStairs(self, n: int) -> int:\n        pass\n",
+      "java": "class Solution {\n    public int climbStairs(int n) {\n        return 0;\n    }\n}\n",
+      "cpp": "class Solution {\npublic:\n    int climbStairs(int n) {\n        return 0;\n    }\n};\n",
+      "javascript": "class Solution {\n    climbStairs(n) {\n        \n    }\n}\n"
     },
     "tags": ["math", "dynamic programming", "memoization"],
     "acceptance_rate": 51.9
@@ -189,8 +199,9 @@
       "nums is sorted in ascending order"
     ],
     "examples": [
-      { "input": "nums = [-1,0,3,5,9,12], target = 9", "output": "4", "explanation": "9 exists in nums at index 4." },
-      { "input": "nums = [-1,0,3,5,9,12], target = 2", "output": "-1", "explanation": "2 does not exist in nums so return -1." }
+      { "input": "-1 0 3 5 9 12\n9", "output": "4", "explanation": "9 exists at index 4." },
+      { "input": "-1 0 3 5 9 12\n2", "output": "-1", "explanation": "2 does not exist." },
+      { "input": "5\n5", "output": "0", "explanation": "Single element match." }
     ],
     "hidden_testcases": [
       { "input": "-1 0 3 5 9 12\n9", "expected_output": "4" },
@@ -200,7 +211,10 @@
       { "input": "1 3 5 7 9 11 13\n7", "expected_output": "3" }
     ],
     "starter_code": {
-      "python": "from typing import List\n\nline1 = list(map(int, input().split()))\ntarget = int(input())\n\nclass Solution:\n    def search(self, nums: List[int], target: int) -> int:\n        # Write your solution here\n        pass\n\nprint(Solution().search(line1, target))\n"
+      "python": "from typing import List\n\nclass Solution:\n    def search(self, nums: List[int], target: int) -> int:\n        pass\n",
+      "java": "class Solution {\n    public int search(int[] nums, int target) {\n        return -1;\n    }\n}\n",
+      "cpp": "class Solution {\npublic:\n    int search(vector<int>& nums, int target) {\n        return -1;\n    }\n};\n",
+      "javascript": "class Solution {\n    search(nums, target) {\n        \n    }\n}\n"
     },
     "tags": ["array", "binary search"],
     "acceptance_rate": 55.6
@@ -217,8 +231,9 @@
       "strs[i] consists of only lowercase English letters"
     ],
     "examples": [
-      { "input": "strs = [\"flower\",\"flow\",\"flight\"]", "output": "\"fl\"" },
-      { "input": "strs = [\"dog\",\"racecar\",\"car\"]", "output": "\"\"", "explanation": "There is no common prefix among the input strings." }
+      { "input": "flower flow flight", "output": "fl", "explanation": "Common prefix is 'fl'." },
+      { "input": "dog racecar car", "output": "", "explanation": "No common prefix." },
+      { "input": "interview", "output": "interview", "explanation": "Single string." }
     ],
     "hidden_testcases": [
       { "input": "flower flow flight", "expected_output": "fl" },
@@ -228,7 +243,10 @@
       { "input": "throne throne throne", "expected_output": "throne" }
     ],
     "starter_code": {
-      "python": "from typing import List\n\nstrs = input().split()\n\nclass Solution:\n    def longestCommonPrefix(self, strs: List[str]) -> str:\n        # Write your solution here\n        pass\n\nprint(Solution().longestCommonPrefix(strs))\n"
+      "python": "from typing import List\n\nclass Solution:\n    def longestCommonPrefix(self, strs: List[str]) -> str:\n        pass\n",
+      "java": "class Solution {\n    public String longestCommonPrefix(String[] strs) {\n        return \"\";\n    }\n}\n",
+      "cpp": "#include <vector>\n#include <string>\nusing namespace std;\n\nclass Solution {\npublic:\n    string longestCommonPrefix(vector<string>& strs) {\n        return \"\";\n    }\n};\n",
+      "javascript": "class Solution {\n    longestCommonPrefix(strs) {\n        \n    }\n}\n"
     },
     "tags": ["string", "trie"],
     "acceptance_rate": 41.8
@@ -238,7 +256,7 @@
     "slug": "number-of-islands",
     "difficulty": "Medium",
     "category": "Graphs",
-    "description": "Given an `m x n` 2D binary grid which represents a map of `'1'`s (land) and `'0'`s (water), return the number of islands.\n\nAn **island** is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are surrounded by water.\n\nInput: first line is `m n`, then m lines of space-separated 1s and 0s.",
+    "description": "Given an `m x n` 2D binary grid which represents a map of `'1'`s (land) and `'0'`s (water), return the number of islands.\n\nAn **island** is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are surrounded by water.",
     "constraints": [
       "m == grid.length",
       "n == grid[i].length",
@@ -246,17 +264,22 @@
       "grid[i][j] is '0' or '1'"
     ],
     "examples": [
-      { "input": "grid = [[1,1,1,1,0],[1,1,0,1,0],[1,1,0,0,0],[0,0,0,0,0]]", "output": "1" },
-      { "input": "grid = [[1,1,0,0,0],[1,1,0,0,0],[0,0,1,0,0],[0,0,0,1,1]]", "output": "3" }
+      { "input": "4 5\n1 1 1 1 0\n1 1 0 1 0\n1 1 0 0 0\n0 0 0 0 0", "output": "1", "explanation": "One island." },
+      { "input": "4 5\n1 1 0 0 0\n1 1 0 0 0\n0 0 1 0 0\n0 0 0 1 1", "output": "3", "explanation": "Three islands." },
+      { "input": "1 1\n1", "output": "1", "explanation": "Single cell." }
     ],
     "hidden_testcases": [
       { "input": "4 5\n1 1 1 1 0\n1 1 0 1 0\n1 1 0 0 0\n0 0 0 0 0", "expected_output": "1" },
       { "input": "4 5\n1 1 0 0 0\n1 1 0 0 0\n0 0 1 0 0\n0 0 0 1 1", "expected_output": "3" },
       { "input": "1 1\n1", "expected_output": "1" },
-      { "input": "2 2\n0 0\n0 0", "expected_output": "0" }
+      { "input": "2 2\n0 0\n0 0", "expected_output": "0" },
+      { "input": "3 3\n1 0 1\n0 1 0\n1 0 1", "expected_output": "5" }
     ],
     "starter_code": {
-      "python": "import sys\nfrom typing import List\n\nlines = sys.stdin.read().split('\\n')\nm, n = map(int, lines[0].split())\ngrid = []\nfor i in range(1, m+1):\n    grid.append(lines[i].split())\n\nclass Solution:\n    def numIslands(self, grid: List[List[str]]) -> int:\n        # Write your solution here\n        pass\n\nprint(Solution().numIslands(grid))\n"
+      "python": "from typing import List\n\nclass Solution:\n    def numIslands(self, grid: List[List[str]]) -> int:\n        pass\n",
+      "java": "class Solution {\n    public int numIslands(char[][] grid) {\n        return 0;\n    }\n}\n",
+      "cpp": "class Solution {\npublic:\n    int numIslands(vector<vector<char>>& grid) {\n        return 0;\n    }\n};\n",
+      "javascript": "class Solution {\n    numIslands(grid) {\n        \n    }\n}\n"
     },
     "tags": ["array", "depth-first search", "breadth-first search", "union find"],
     "acceptance_rate": 57.2
@@ -266,24 +289,29 @@
     "slug": "merge-intervals",
     "difficulty": "Medium",
     "category": "Arrays",
-    "description": "Given an array of `intervals` where `intervals[i] = [starti, endi]`, merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.\n\nInput: each line contains two space-separated integers representing an interval. First line is the number of intervals.",
+    "description": "Given an array of `intervals` where `intervals[i] = [starti, endi]`, merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.",
     "constraints": [
       "1 <= intervals.length <= 10^4",
       "intervals[i].length == 2",
       "0 <= starti <= endi <= 10^4"
     ],
     "examples": [
-      { "input": "[[1,3],[2,6],[8,10],[15,18]]", "output": "[[1,6],[8,10],[15,18]]", "explanation": "[1,3] and [2,6] overlap, merge to [1,6]." },
-      { "input": "[[1,4],[4,5]]", "output": "[[1,5]]", "explanation": "[1,4] and [4,5] are considered overlapping." }
+      { "input": "4\n1 3\n2 6\n8 10\n15 18", "output": "1 6\n8 10\n15 18", "explanation": "[1,3] and [2,6] overlap, merge to [1,6]." },
+      { "input": "2\n1 4\n4 5", "output": "1 5", "explanation": "[1,4] and [4,5] overlap." },
+      { "input": "1\n1 1", "output": "1 1", "explanation": "Single interval." }
     ],
     "hidden_testcases": [
       { "input": "4\n1 3\n2 6\n8 10\n15 18", "expected_output": "1 6\n8 10\n15 18" },
       { "input": "2\n1 4\n4 5", "expected_output": "1 5" },
       { "input": "1\n1 1", "expected_output": "1 1" },
-      { "input": "3\n1 4\n0 4\n3 5", "expected_output": "0 5" }
+      { "input": "3\n1 4\n0 4\n3 5", "expected_output": "0 5" },
+      { "input": "2\n0 2\n3 4", "expected_output": "0 2\n3 4" }
     ],
     "starter_code": {
-      "python": "import sys\nfrom typing import List\n\nlines = sys.stdin.read().split('\\n')\nn = int(lines[0])\nintervals = [list(map(int, lines[i+1].split())) for i in range(n)]\n\nclass Solution:\n    def merge(self, intervals: List[List[int]]) -> List[List[int]]:\n        # Write your solution here\n        pass\n\nresult = Solution().merge(intervals)\nfor interval in result:\n    print(' '.join(map(str, interval)))\n"
+      "python": "from typing import List\n\nclass Solution:\n    def merge(self, intervals: List[List[int]]) -> List[List[int]]:\n        pass\n",
+      "java": "class Solution {\n    public int[][] merge(int[][] intervals) {\n        return new int[][]{};\n    }\n}\n",
+      "cpp": "class Solution {\npublic:\n    vector<vector<int>> merge(vector<vector<int>>& intervals) {\n        return {};\n    }\n};\n",
+      "javascript": "class Solution {\n    merge(intervals) {\n        \n    }\n}\n"
     },
     "tags": ["array", "sorting"],
     "acceptance_rate": 46.3
@@ -293,16 +321,16 @@
     "slug": "coin-change",
     "difficulty": "Medium",
     "category": "Dynamic Programming",
-    "description": "You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money.\n\nReturn the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return `-1`.\n\nYou may assume that you have an infinite number of each kind of coin.\n\nInput: first line is space-separated coin denominations, second line is the target amount.",
+    "description": "You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money.\n\nReturn the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return `-1`.\n\nYou may assume that you have an infinite number of each kind of coin.",
     "constraints": [
       "1 <= coins.length <= 12",
       "1 <= coins[i] <= 2^31 - 1",
       "0 <= amount <= 10^4"
     ],
     "examples": [
-      { "input": "1 2 5\n11", "output": "3", "explanation": "coins = [1,2,5], amount = 11. Result: 11 = 5 + 5 + 1." },
-      { "input": "2\n3", "output": "-1", "explanation": "coins = [2], amount = 3. Cannot make amount 3." },
-      { "input": "1\n0", "output": "0", "explanation": "coins = [1], amount = 0. No coins needed." }
+      { "input": "1 2 5\n11", "output": "3", "explanation": "11 = 5 + 5 + 1." },
+      { "input": "2\n3", "output": "-1", "explanation": "Cannot make 3 with coin 2." },
+      { "input": "1\n0", "output": "0", "explanation": "Zero amount needs 0 coins." }
     ],
     "hidden_testcases": [
       { "input": "1 2 5\n11", "expected_output": "3" },
@@ -312,7 +340,10 @@
       { "input": "186 419 83 408\n6249", "expected_output": "20" }
     ],
     "starter_code": {
-      "python": "from typing import List\n\nclass Solution:\n    def coinChange(self, coins: List[int], amount: int) -> int:\n        # Write your solution here\n        pass\n"
+      "python": "from typing import List\n\nclass Solution:\n    def coinChange(self, coins: List[int], amount: int) -> int:\n        pass\n",
+      "java": "class Solution {\n    public int coinChange(int[] coins, int amount) {\n        return -1;\n    }\n}\n",
+      "cpp": "class Solution {\npublic:\n    int coinChange(vector<int>& coins, int amount) {\n        return -1;\n    }\n};\n",
+      "javascript": "class Solution {\n    coinChange(coins, amount) {\n        \n    }\n}\n"
     },
     "tags": ["array", "dynamic programming", "breadth-first search"],
     "acceptance_rate": 42.8
@@ -322,7 +353,7 @@
     "slug": "word-search",
     "difficulty": "Hard",
     "category": "Graphs",
-    "description": "Given an `m x n` grid of characters `board` and a string `word`, return `true` if `word` exists in the grid.\n\nThe word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.\n\nInput: first line is `m n`, next m lines are grid rows (space-separated chars), last line is the word to search.",
+    "description": "Given an `m x n` grid of characters `board` and a string `word`, return `true` if `word` exists in the grid.\n\nThe word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.",
     "constraints": [
       "m == board.length",
       "n == board[i].length",
@@ -331,18 +362,22 @@
       "board and word consist of only lowercase and uppercase English letters"
     ],
     "examples": [
-      { "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"", "output": "true" },
-      { "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"SEE\"", "output": "true" },
-      { "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCB\"", "output": "false" }
+      { "input": "3 4\nA B C E\nS F C S\nA D E E\nABCCED", "output": "True", "explanation": "Word found in grid." },
+      { "input": "3 4\nA B C E\nS F C S\nA D E E\nSEE", "output": "True", "explanation": "Word found." },
+      { "input": "3 4\nA B C E\nS F C S\nA D E E\nABCB", "output": "False", "explanation": "Word not found." }
     ],
     "hidden_testcases": [
       { "input": "3 4\nA B C E\nS F C S\nA D E E\nABCCED", "expected_output": "True" },
       { "input": "3 4\nA B C E\nS F C S\nA D E E\nSEE", "expected_output": "True" },
       { "input": "3 4\nA B C E\nS F C S\nA D E E\nABCB", "expected_output": "False" },
-      { "input": "1 1\nA\nA", "expected_output": "True" }
+      { "input": "1 1\nA\nA", "expected_output": "True" },
+      { "input": "2 2\nA B\nC D\nDCA", "expected_output": "True" }
     ],
     "starter_code": {
-      "python": "import sys\nfrom typing import List\n\nlines = sys.stdin.read().strip().split('\\n')\nm, n = map(int, lines[0].split())\nboard = [lines[i+1].split() for i in range(m)]\nword = lines[m+1]\n\nclass Solution:\n    def exist(self, board: List[List[str]], word: str) -> bool:\n        # Write your solution here\n        pass\n\nprint(Solution().exist(board, word))\n"
+      "python": "from typing import List\n\nclass Solution:\n    def exist(self, board: List[List[str]], word: str) -> bool:\n        pass\n",
+      "java": "class Solution {\n    public boolean exist(char[][] board, String word) {\n        return false;\n    }\n}\n",
+      "cpp": "class Solution {\npublic:\n    bool exist(vector<vector<char>>& board, string word) {\n        return false;\n    }\n};\n",
+      "javascript": "class Solution {\n    exist(board, word) {\n        \n    }\n}\n"
     },
     "tags": ["array", "backtracking", "matrix"],
     "acceptance_rate": 40.7

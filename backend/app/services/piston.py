@@ -23,7 +23,7 @@ from app.models.submission import (
     RunCodeResponse,
     TestCaseResult,
 )
-from app.services.code_wrapper import wrap_python_solution
+from app.services.code_wrapper import wrap_python_solution, wrap_solution
 
 logger = logging.getLogger(__name__)
 
@@ -305,17 +305,22 @@ class PistonService:
         language: Language,
         test_case: dict,
         test_number: int,
+        problem_title: str = "Unknown",
     ) -> TestCaseResult:
         stdin = test_case["input"]
         expected = test_case["expected_output"].strip()
 
         async with semaphore:
             try:
-                # For Python, wrap the solution code to handle input parsing
+                # Wrap the solution code for ALL languages to handle input parsing and output capture
                 final_code = source_code
                 if language == Language.python:
                     logger.info(f"[Test {test_number}] Wrapping Python solution for input: {stdin[:50]}")
                     final_code = wrap_python_solution(source_code, stdin)
+                else:
+                    # Wrap non-Python languages using language-aware wrappers
+                    logger.info(f"[Test {test_number}] Wrapping {language.value} solution for problem: {problem_title}")
+                    final_code = wrap_solution(source_code, problem_title, stdin, language.value)
                 
                 result = await self._execute_local(final_code, language, "")
                 logger.info(f"[Test {test_number}] Execution result: status={result.status}, stdout={result.stdout[:100] if result.stdout else 'EMPTY'}")
@@ -359,6 +364,7 @@ class PistonService:
         source_code: str,
         language: Language,
         test_cases: list[dict],
+        problem_title: str = "Unknown",
     ) -> list[TestCaseResult]:
         semaphore = asyncio.Semaphore(CONCURRENCY_LIMIT)
 
@@ -369,6 +375,7 @@ class PistonService:
                 language,
                 test_case,
                 index + 1,
+                problem_title,
             )
             for index, test_case in enumerate(test_cases)
         ]
