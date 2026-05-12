@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     # App
     app_env: str = "development"
     secret_key: str = "change_me"
-    cors_origins: str = "http://localhost:3000,https://codecritic-ai.onrender.com"
+    cors_origins: str = "*"
 
     class Config:
         env_file = ".env"

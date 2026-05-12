@@ -323,7 +323,7 @@ function Workspace() {
                 minimap: { enabled: false },
                 scrollBeyondLastLine: false,
                 automaticLayout: true,
-                wordWrap: 'on',
+                wordWrap: 'off',
               }}
             />
           </div>

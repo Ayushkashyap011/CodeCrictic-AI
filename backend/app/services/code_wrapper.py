@@ -11,7 +11,32 @@ def _prepare_code_for_language(code: str, language: str) -> str:
     if language == "java":
         # Remove 'public' modifier from Solution class since both Solution and Main will be in same file
         code = re.sub(r'public\s+class\s+Solution', 'class Solution', code)
+        # Fix Monaco auto-complete: strip extra closing braces at end
+        # Count braces to ensure they're balanced
+        code = _fix_extra_braces(code)
     return code
+
+
+def _fix_extra_braces(code: str) -> str:
+    """Remove extra closing braces that Monaco editor auto-completes."""
+    lines = code.strip().split('\n')
+    lines = [l for l in lines if l.strip()]
+    
+    # Count brace balance
+    brace_count = 0
+    for line in lines:
+        brace_count += line.count('{')
+        brace_count -= line.count('}')
+    
+    # Remove trailing closing braces if there are more closing than opening
+    while brace_count < 0 and lines:
+        if lines[-1].strip() == '}':
+            lines.pop()
+            brace_count += 1
+        else:
+            break
+    
+    return '\n'.join(lines)
 
 
 def _ensure_cpp_includes(code: str) -> str:

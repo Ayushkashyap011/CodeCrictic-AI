@@ -18,18 +18,18 @@ function TestCaseResult({ result }) {
       <div className="test-case-content">
         <div className="test-case-section">
           <span className="section-label">Input:</span>
-          <pre className="code-block">{result.input || 'N/A'}</pre>
+          <pre className="code-block">{result.input !== undefined && result.input !== null ? result.input : 'N/A'}</pre>
         </div>
 
         <div className="test-case-section">
           <span className="section-label">Expected Output:</span>
-          <pre className="code-block">{result.expected || 'N/A'}</pre>
+          <pre className="code-block">{result.expected !== undefined && result.expected !== null ? result.expected : 'N/A'}</pre>
         </div>
 
         <div className="test-case-section">
           <span className="section-label">Actual Output:</span>
           <pre className={`code-block ${result.passed ? 'success' : 'error'}`}>
-            {result.actual || 'N/A'}
+            {result.actual !== undefined && result.actual !== null ? result.actual : 'N/A'}
           </pre>
         </div>
 
