@@ -29,8 +29,8 @@ logger = logging.getLogger(__name__)
 
 # How many test cases to run concurrently.
 CONCURRENCY_LIMIT = 4
-# Per-process timeout in seconds.
-TIMEOUT = 15.0
+# Per-process timeout in seconds (covers both compilation and execution).
+TIMEOUT = 30.0
 
 
 # Note: Windows event loop policy is set in app/main.py at module load time
