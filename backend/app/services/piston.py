@@ -331,7 +331,7 @@ class PistonService:
                     final_code = wrap_solution(source_code, problem_title, stdin, language.value)
                 
                 result = await self._execute_local(final_code, language, "")
-                logger.info(f"[Test {test_number}] Execution result: status={result.status}, stdout={result.stdout[:100] if result.stdout else 'EMPTY'}")
+                logger.info(f"[Test {test_number}] Execution result: status={result.status}, stdout={result.stdout[:100] if result.stdout else 'EMPTY'}, stderr={result.stderr[:100] if result.stderr else 'NONE'}")
                 
                 actual = _normalize_output(result.stdout)
                 passed = (result.status == "Accepted") and (actual == expected)
@@ -345,6 +345,8 @@ class PistonService:
                     error = result.stderr or result.stdout or "Runtime error"
                 elif result.status == "Time Limit Exceeded":
                     error = "Time Limit Exceeded"
+                elif result.status == "Error":
+                    error = result.stderr or "System error"
 
                 return TestCaseResult(
                     test_number=test_number,
